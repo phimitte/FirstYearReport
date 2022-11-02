@@ -1,0 +1,22 @@
+\input{settings/settings}
+
+\begin{document}
+	
+	\pagenumbering{roman}
+
+   \begin{titlepage}
+		\include{chapters/titlepage}
+   \end{titlepage}
+
+   \tableofcontents
+
+   \cleardoublepage\pagenumbering{arabic}
+
+   \include{chapters/introduction}
+   
+
+   \bibliographystyle{acm}
+	 \addcontentsline{toc}{chapter}{\bibname}
+   \bibliography{literature/fyrep_literature}
+
+\end{document}

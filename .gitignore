@@ -24,8 +24,13 @@
 *.run.xml
 *blx.bib
 *.synctex.gz
+*.auxlock
 *.bak
 *.tmp
+*.pdf
+*.fdb_latexmk
+*.fls
+
 
 
 
