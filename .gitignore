@@ -18,10 +18,14 @@
 *.lof
 *.lot
 *.maf
-.mtc
+*.mtc
 *.out
 *.bak
 *.run.xml
 *blx.bib
 *.synctex.gz
+*.bak
+*.tmp
+
+
 
