@@ -1,0 +1,159 @@
+\section*{Introduction}
+%
+In section \ref{sec:motivation} I am introducing my research project by giving information about the relevance of the research area and the motivation and vision behind the project. 
+Furthermore, I am embedding the project in the context of a bigger picture of the research field. In section \ref{sec:approach} the approach for the PhD project is introduced and explained.
+In section \ref{sec:outline} I give an outline of the overall PhD project, which is followed by an explanation of the three key areas of the project in the context of the 
+relevant literature. In section \ref{sec:objectives} results and objectives of the PhD project are identified in form of publication targets. 
+
+
+\section{Motivation of the research project} \label{sec:motivation}
+%
+Why continuum robot mechanisms? Most of the current robots in industry are discrete mechanisms based on a set of rigid links, which are connected by rotational joints with one to three degrees of freedom (DOFs).
+These discrete mechanisms are mounted to their environment and being actuated with electric motors, pneumatic pumps or hydraulic pumps. Therefore, they can exert forces in a 
+variety of force scales from a few Newton to forces in the range of Meganewtons. By adding rigid links to the mechanism, the number of DOFs increases by the DOFs of the additional joint, which makes
+the robot particularly accurate for a large amount of rigid links, very fast and easy to control due to their low number of DOFs. In contrast to the previously described discrete mechanisms are continuum mechanisms
+ not constructed from a set of rigid links and rotational joints. Continuum robots generate a motion by changing their shape via elastic deformations, which leads to smooth curves,
+ smooth surfaces or smooth volumetric solid structures dependent on the shape of the continuum. As a result of that, continuum robots have an infinite amount of degrees of freedom, which makes
+ them particularly hard to control \cite{Robinson1999_conf}. In addition to that, the actuation technologies for continuum mechanisms are slower than their discrete counterparts and due to the 
+ elastic deformations do they have the inherent property that the forces, a continuum system can handle, are bounded by the material properties of the elastic materials.
+So the main question, which should be asked in this context, is the following;
+Why should we consider designing continuum robot mechanisms?
+%
+While all of the above might be accurate, there are a lot of strong reasons to develop continuum mechanisms for a variety of tasks. The flexible structure provides them with the ability
+to take nearly any desired shape which leads to more precise motions including the ability to move along any type of physical object compared to their rigid counterparts. To increase the
+ adaptability of a discrete mechanism means additional stiff heavy links and is only useful for big floor-mounted robots. These robots are being used in closed environments,
+often inside of cages in manufacturing halls, where they can not harm any humans. There are a lot of challenges that require robots that can leave these enclosed environments and interact with humans directly.
+That requires robots to be adaptive and flexible, move in open undefined environments and interact with humans, animals or plants in a natural way. This adaptivity to unknown terrains
+is the main reason for the development of continuum robot mechanisms and explains the fact that soft robotics is a largely growing research area over the last decade.
+%
+Most soft robots are designed with a bio-inspired approach \cite{Kim2013,Trivedi2008}. There are systems inspired by snakes \cite{Onal2013, Qi2020, Branyan2017_conf},
+ fish \cite{Hou2019_conf,Hu2020,Marchese2014}, octopus \cite{OBrien2001_conf,Neppalli2007_conf} or manta rays \cite{Suzumori2007_conf,Cai2009_conf}.
+%
+There are various applications where these properties are being a huge advantage over current technologies and thus soft robotics are influencing these fields. 
+One of them is the grasping of vegetables. 
+%
+Another key area of robotics is the design of robots that can move within undefined terrains. This reqires lightweight flexible mechanisms that are capable of interactacting
+ with that environment to generate locomotion. This thesis intends to shrink that gap with the development of a soft robot for legged locomotion. While there are also advancements
+ in literature in the development of robot systems for aquatic and aerial locomotion like . But I will focus on terrestrial locomotion, where we have a constant interaction with an 
+ undefined environment. This is not the case in the air or under water. Therefore, the previously mentioned typical properties of a continuum mechanism are mostly relevant for
+ structures working in terrestrial environments. In nature, there arise two types of locomotion principles for that. The first locomotion principle is legless locomotion and can 
+ be found for example in snakes or worms or centipedes. This has been applied to the design of particular soft robots by a number of other researchers in literature. 
+ The second type of terrestrial locomotion principle, which is applied by certain biological systems, is legged locomotion. This is being applied by a wide variety of biological
+ systems with different amounts of legs like for example humans, horses, bulls, spyders. This is the type of locomotion we will focus on within this thesis by mimicking these principles
+ and applying them to soft robots.
+%
+
+
+
+%Soft robotics is a largely growing field. 
+%
+%\section{Literature Survey} \label{sec:literatureSurvey}
+%
+%
+\section{Approach to the PhD project} \label{sec:approach}
+For the development of the robot demonstrator within this PhD I plan to follow an iterative development approach. That means, that the design evolves over the time of my PhD
+ with the knowledge about the system from every new experiment, a more powerful and accurate model for better mechanical predictions, new inspiration from design ideas
+ I came up with along the line and information about the control of the robot.
+%
+To come up with a first design for the robot demonstrator, I am going to start with the development of a numerical model, which will be used in the second year for the design
+ of the first prototype of the physical robot in a model-based design approach. This numerical model is the foundation of the project because it makes the connection
+ between the design, the control, and the experimental data. An adjustment to one of those will influence the other two and the model quantifies this influence. 
+%
+Based on that model I am going to design and fabricate a physical robot demonstrator and then I am going to develop a control for the physical demonstrator
+ in a test setup with the intention to move the robot in a certain gait. 
+%
+My plan is to start with a numerical model and feed that model with parameters that have been identified in designed experiments. 
+%
+There are two types of experiments I am going to perform within this PhD for the development of the soft robot. 
+The first type of experiment is parameter identification. This type of experiment is used to quantify the value of certain parameters in the numerical model either directly 
+or via a curve-fitting optimization approach like the Nelder-Mead simplex algorithm \cite{Gao2012}. The quality of these parameters is primarily determined by the experimental
+ procedure and the quality of the numerical model. 
+This means that the acquired system parameters are only valid if the numerical model is able to cover all the mechanical effects as well that have an influence on the experimental setup. 
+The second type of experiments is the experimental validation of the numerical model. To see, if the numerical model can accurately predict the behavior of a physical robot I 
+am going to perform another set of experiments to determine the accuracy of the numerical prediction.
+%
+I have identified three key areas for the development of the robot demonstrator. The first area is the numerical model or modeling framework which I am going to use to predict 
+the system behavior of the robot. That includes the development of a simulation framework for the simulation of different morphologies, the research on accurate constitutive laws for the 
+continuum bodies, the experiments to identify material parameters and experiments to validate the model. The second key area of the project is the design of robot demonstrators. This
+includes the design of a robot, the fabrication and the everything that is related to the actuation of such a robot. The last key area of the robot development is the control with
+respect to a legged locomotion of the robot. That last big area includes everything from sensor design, sensor implementation, state estimation, locomotion control of nonlinear robots,
+gait analysis and gait control for locomotion, mechanical stability and experiments to identify parameters about the contact like friction and impact parameters. 
+%
+Now the idea behind the iterative design approach is that as soon as we have an accurate model to simulate the mechanical behavior of soft robots with different morphological structure
+we can work on all three key areas independently. I can distribute certain parts of the model to students and they can work on projects towards the three key areas of my robot without
+interfering with each others work or my work.
+%
+For example there could be one student working on state estimation for a soft robotic leg, while another one works on the design of a spring loaded foot for energy optimal
+ locomotion and a third student can work on feedforward control for the robot while I work on improving the numerical speed of computation of the model or work on the design of 
+ the actuation.
+%
+That avoids bottlenecks in the project and a faster progress, because it guarantees that multiple people can work on different key areas independently of each other without the
+ necessity to wait for anothers results. This makes the project direction flexible for adjustments. I do not know if it works in practice exactly like that, but that is the reasoning behind
+ my project approach.
+%
+A situation like with a linear robot development approach where I spend the first two years on the final design and fabrication of a robot, another year on sensor implementation
+ and modeling and then realize in the last year while trying to control the system that it is not going to work with that design can be hopefully avoided with my project approach.
+%
+%to put together and solve the equations of motion for 
+%
+In the next section I present an outline of the research in the PhD project.
+%
+\section{Outline of the PhD project} \label{sec:outline}
+%
+I have distributed the PhD project in 7 phases. An explanation for each of these project phases is shown in figure \ref{ProjectPhases}. A road map for the PhD in form of a Gantt
+chart is illustrated in figure \ref{GanttPhD}, where all these 7 phases are planned with a timeline in their specific color. The Gantt chart also includes the courses I take
+ and the publication targets in the form of papers. 
+%
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=14cm]{graphics/ProjectPhases.pdf}
+    \caption{Project Phases of the PhD.}
+    \label{ProjectPhases}
+   \end{figure}
+%
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=14cm]{graphics/GanttPhD.pdf}
+    \caption{Gantt chart for the PhD project.}
+    \label{GanttPhD}
+   \end{figure}   
+%
+As a result of the discussions with my supervisors, it is clear to me that there are definitely too many subprojects included for the amount of time in the PhD.
+To be more specific, Phase 1-3 are related to the numerical model and the design of a physical demonstrator and are therefore absolutely necessary for the PhD project. 
+The same goes for Phase 7, because writing a PhD thesis in the fourth year is a mandatory part of the PhD. But especially in the third year, where Phase 4-6 are mentioned
+in the Gantt chart, we are a bit flexible to decide which of these research topics are the most relevant at that time for the project and we came to a conclusion to make a decision
+on that at the end of the second year about which of these project phases we are going to approach in the third year. 
+%
+In the following sections I am going to discuss all three key areas that I identified for the iterative development procedure of the robot in the context of the relevant literature.
+%
+%
+\subsection*{Development of an accurate numerical model}\label{sub:Model}
+%
+To make valid assumptions about the morphology of the robot, we need to have an accurate numerical model of the robot, which we can use to simulate the influence of different
+morphologies, actuation techniques, material and geometric design properties or sensor placements on the mechanical behavior of the robot. This information can be used to
+make and later adjust the design based on a desired mechanical behavior.    
+%
+\subsection*{Design of a physical demonstrator} \label{sub:Design}
+%
+As mentioned in section \ref{sec:approach}, we follow a model-based design approach for the physical demonstrator. That means, that the design decisions are based on predictions 
+from numerical simulations and experimental data. 
+%
+\subsection*{Control for the legged locomotion of the robot demonstrator} \label{sub:Control}
+%
+The third big subproject of my PhD is the control of the legged locomotion for that robot demonstrator. 
+
+
+
+\section{Objectives and publication targets for the PhD} \label{sec:objectives}
+%
+The above mentioned research within this project is dedicated towards the vision of developing compliant robot systems for legged locomotion. Taking that global vision into account,
+I came up with the following publication targets as objectives for this PhD:
+
+\begin{enumerate}
+    \item Model soft robots as nonlinear multi-body continuum-based systems (Conference paper, maybe ACC, year 2) 
+    \item Model-based Design of a physical muti-pedal soft robot demonstrator for locomotion  (journal paper, maybe Soft Robotics Journal or Robotics and Automation letters, year 2)
+    \item State estimation for continuum robots (conference paper, year 3)
+    \item Mechanical stability analysis of multi-pedal soft robots for legged locomotion control (conference paper, RoboSOFT or ICRA, year 3)
+    \item Control design for legged locomotion of a multipedal soft robot demonstrator (Journal Paper, maybe International Journal of Robust and Nonlinear Control, year 4)
+    \item Gait Analysis for multi-limb soft robots (Conference paper, maybe RoboSoft or ICRA, year 4) \; .
+\end{enumerate}

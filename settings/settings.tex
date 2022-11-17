@@ -1,10 +1,12 @@
 \documentclass[
     12pt,
-    a4paper,
-    twoside,
-    openright, % Kapitel beginnen rechts
+    a4paper
+    %twoside,
+   %openright, % Kapitel beginnen rechts
     % draft
-]{report}
+%]{report}
+]{article}
+%\documentclass[12pt,a4paper]{article}
 
 % Schriftzeichen Encoder
 \usepackage[utf8]{inputenc}
@@ -120,22 +122,22 @@
 
 % Seitenlayout
 \usepackage{fancyhdr}
-\setlength{\headheight}{6mm}
-\setlength{\textheight}{210mm}
-\setlength{\textwidth}{140mm}
-\setlength{\oddsidemargin}{9.6mm}
-\setlength{\evensidemargin}{9.6mm}
-\setlength{\footskip}{10mm}
+%\setlength{\headheight}{6mm}
+%\setlength{\textheight}{210mm}
+%\setlength{\textwidth}{150mm}
+%\setlength{\oddsidemargin}{5.6mm}
+%\setlength{\evensidemargin}{5.6mm}
+%\setlength{\footskip}{10mm}
 \setlength{\paperwidth}{210mm}
 \setlength{\paperheight}{297mm}
 
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{\rightmark}
-\fancyfoot[C]{}
+%\pagestyle{fancy}
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+%\fancyhead[LE,RO]{\thepage}
+%\fancyhead[RE]{\leftmark}
+%\fancyhead[LO]{\rightmark}
+%\fancyfoot[C]{}
 
 % Tabellen
 \usepackage{array}
