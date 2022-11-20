@@ -1,9 +1,10 @@
 \section*{Introduction}
 %
 In section \ref{sec:motivation} I am introducing my research project by giving information about the relevance of the research area and the motivation and vision behind the project. 
-Furthermore, I am embedding the project in the context of a bigger picture of the research field. In section \ref{sec:approach} the approach for the PhD project is introduced and explained.
-In section \ref{sec:outline} I give an outline of the overall PhD project, which is followed by an explanation of the three key areas of the project in the context of the 
-relevant literature. In section \ref{sec:objectives} results and objectives of the PhD project are identified in form of publication targets. 
+Furthermore, I am embedding the project in the bigger picture of the research field. In section \ref{sec:approach} the approach for the PhD project and the reasoning behind it
+is presented. In section \ref{sec:outline} I give an outline of the overall PhD project, which is followed by an explanation of the three key areas of the project that I have identified
+ in the context of the relevant literature. In section \ref{sec:objectives} possible results and objectives of the PhD project are presented in form of publication targets and ideas 
+ for possible presentations within the PhD. 
 
 
 \section{Motivation of the research project} \label{sec:motivation}
@@ -16,7 +17,7 @@ the robot particularly accurate for a large amount of rigid links, very fast and
  smooth surfaces or smooth volumetric solid structures dependent on the shape of the continuum. As a result of that, continuum robots have an infinite amount of degrees of freedom, which makes
  them particularly hard to control \cite{Robinson1999_conf}. In addition to that, the actuation technologies for continuum mechanisms are slower than their discrete counterparts and due to the 
  elastic deformations do they have the inherent property that the forces, a continuum system can handle, are bounded by the material properties of the elastic materials.
-So the main question, which should be asked in this context, is the following;
+So the main question, which should be asked in this context, is the following; \par
 Why should we consider designing continuum robot mechanisms?
 %
 While all of the above might be accurate, there are a lot of strong reasons to develop continuum mechanisms for a variety of tasks. The flexible structure provides them with the ability
@@ -27,7 +28,7 @@ That requires robots to be adaptive and flexible, move in open undefined environ
 is the main reason for the development of continuum robot mechanisms and explains the fact that soft robotics is a largely growing research area over the last decade.
 %
 Most soft robots are designed with a bio-inspired approach \cite{Kim2013,Trivedi2008}. There are systems inspired by snakes \cite{Onal2013, Qi2020, Branyan2017_conf},
- fish \cite{Hou2019_conf,Hu2020,Marchese2014}, octopus \cite{OBrien2001_conf,Neppalli2007_conf} or manta rays \cite{Suzumori2007_conf,Cai2009_conf}.
+ fish \cite{Hou2019_conf,Hu2020,Marchese2014}, octopus \cite{OBrien2001_conf,Neppalli2007_conf} or manta rays \cite{Suzumori2007_conf,Cai2009_conf}. \par
 %
 There are various applications where these properties are being a huge advantage over current technologies and thus soft robotics are influencing these fields. 
 One of them is the grasping of vegetables. 
@@ -42,12 +43,6 @@ Another key area of robotics is the design of robots that can move within undefi
  systems with different amounts of legs like for example humans, horses, bulls, spyders. This is the type of locomotion we will focus on within this thesis by mimicking these principles
  and applying them to soft robots.
 %
-
-
-
-%Soft robotics is a largely growing field. 
-%
-%\section{Literature Survey} \label{sec:literatureSurvey}
 %
 %
 \section{Approach to the PhD project} \label{sec:approach}
@@ -75,7 +70,7 @@ am going to perform another set of experiments to determine the accuracy of the 
 I have identified three key areas for the development of the robot demonstrator. The first area is the numerical model or modeling framework which I am going to use to predict 
 the system behavior of the robot. That includes the development of a simulation framework for the simulation of different morphologies, the research on accurate constitutive laws for the 
 continuum bodies, the experiments to identify material parameters and experiments to validate the model. The second key area of the project is the design of robot demonstrators. This
-includes the design of a robot, the fabrication and the everything that is related to the actuation of such a robot. The last key area of the robot development is the control with
+includes the design of a robot, the fabrication and everything that is related to the actuation of such a robot. The last key area of the robot development is the control with
 respect to a legged locomotion of the robot. That last big area includes everything from sensor design, sensor implementation, state estimation, locomotion control of nonlinear robots,
 gait analysis and gait control for locomotion, mechanical stability and experiments to identify parameters about the contact like friction and impact parameters. 
 %
@@ -84,12 +79,12 @@ we can work on all three key areas independently. I can distribute certain parts
 interfering with each others work or my work.
 %
 For example there could be one student working on state estimation for a soft robotic leg, while another one works on the design of a spring loaded foot for energy optimal
- locomotion and a third student can work on feedforward control for the robot while I work on improving the numerical speed of computation of the model or work on the design of 
+ locomotion and a third student can work on feedback control for the robot while I work on improving the numerical speed of computation of the model or work on the design of 
  the actuation.
 %
-That avoids bottlenecks in the project and a faster progress, because it guarantees that multiple people can work on different key areas independently of each other without the
- necessity to wait for anothers results. This makes the project direction flexible for adjustments. I do not know if it works in practice exactly like that, but that is the reasoning behind
- my project approach.
+That avoids bottlenecks in the project and should lead to a faster progress, because it guarantees that multiple people can work on different key areas independently of each other without the
+ necessity to wait for anothers results. If it makes sense in individual cases students can use synergies and work together. This makes the project direction flexible for adjustments. I do not know if
+  it works in practice exactly like that, but that is the reasoning behind my project approach.
 %
 A situation like with a linear robot development approach where I spend the first two years on the final design and fabrication of a robot, another year on sensor implementation
  and modeling and then realize in the last year while trying to control the system that it is not going to work with that design can be hopefully avoided with my project approach.
@@ -129,18 +124,99 @@ In the following sections I am going to discuss all three key areas that I ident
 %
 \subsection*{Development of an accurate numerical model}\label{sub:Model}
 %
+The first big key research area is the numerical model of the robot.
 To make valid assumptions about the morphology of the robot, we need to have an accurate numerical model of the robot, which we can use to simulate the influence of different
 morphologies, actuation techniques, material and geometric design properties or sensor placements on the mechanical behavior of the robot. This information can be used to
-make and later adjust the design based on a desired mechanical behavior.    
+make a design and later adjust that design based on a desired mechanical behavior as well as to control the robot. In literature, the most used model appraoch for soft robots is 
+the Piecewise-Constant-Curvature(PCC) model \cite{Webster2010 , Santina2020}. That is an approach that keeps the rigid structure of the system mostly intact and only substitutes the rigid links with links deformed in a
+a specific constant curvature. The advantage is the simple implementation, but the problem with that approach is that it is not very accurate even for single-segmented robots especially when external forces or gravity
+are included in a system, which can be seen in \cite{Neppalli2007_conf}. Another idea would be to use a beam theory like a Timoshenko-beam \cite{Timoshenko1951_book} or a Cosserat-Rod theory \cite{} with
+ a global spatial discretization. That is an approach that is more accurate for a single sigment robot, but not accurate for a multi-body system where multiple beams, rigid bodies as 
+ connectors or sensors as point masses all have an influence on the dynamics of a multi-segment robotic leg. In such a system these simple models would fail to give an accurate description of the 
+ dynamical behavior of a robot and a more advanced model is needed to make reliable predictions about the mechanical behavior. Therefore, to solve that problem and invent an accurate numerical model 
+ for design decisions about system parameters and to develop a controller, we are going to define the multi-limb soft robot as a mechanical multi-body system of a finite amount of 
+ bodies. These bodies can be discretized continua based on nonlinear beam theories for soft actuators or rope theories for a possible tendon-driven actuation or tubes in fluid-driven actuators. The included bodies can also be 
+ rigid bodies like connection pieces, foots of the legs or a core of the robot that are all fabricated with rigid materials and the included bodies in the model can also be point
+  masses for glued sensors on a body or screws or markers for motion tracking. These finite amount of bodies are connected with bilateral algebraic constraints and form together
+  the mechanical multi-body system which we call the soft robot. For the modeling of ridid bodies and point masses I refer to the literature in that area \cite{Glocker2001_book}.
+  To develop discretized continuum bodies we are going to use instead of a global discretization a Finite-Element approach based on a Galerkin discretization \cite{Harsch2021a}.
+  To be more specific, to model the soft actuators we use a nonlinear continuum theory for spatial beams like the Cosserat rod theory \cite{Rubin2013_book} or a Kirchhoff-Love rod theory \cite{Meier2016_diss}
+   and discretize the continuum using a geometrically exact approach of the isogeometric analysis field with B-spline shape functions.
+  %
+In 1985 Simo introduces the term geometrically exact beam theory in \cite{Simo1985, Simo1986}. With this term, he means a Timoshenko beam model with exact strain measures regardless
+ of the magnitude of displacements and strains. Geometrically exact beam theories have in common that large finite three-dimensional deformations can be considered in the continuous
+ beam model as well as for the numerical discretization. This geometrically exact beam theory is adopted by Romero in 2008 in \cite{Romero2008} and later applied to modern beam theories
+ like the Cosserat rod \cite{Eugster2014_diss, Caasenbrood2021_conf} or the Kirchhoff-Love rod \cite{Meier2017}.
+%The principle of virtual work as a main concept to derive a variational beam formulation is introduced in \cite{Eugster2014_diss}
+%and later also used as the basis in \cite{Eugster2020, Harsch2020}. For comparison, the B-spline theory is a lot older than that.
+%
+%These modern beam theories are able to cover 
+Like every continuum theory are geomatrically exact beam theories being equipped with a nonlinear constitutive law that covers the relation between the deformation and the correponding stress
+at every material point. 
+These constitutive laws are being described in continuum mechanics by a strain energy density, often also called strain energy function, which is dependent on the kinematic strain measures
+of the continuum. Most of the rubber materials like typical silicones or resins for soft robots are being described by a hyperelastic material component in the material law. Depending
+on the specific material that is being used visco-elastic components can play a role in the constitutive equation. Depending on the fabrication procedure and material characteristics, anisotropy effects
+need to be accounted for in the constituve law for rubber materials. These type of materials are usually nearly incompressible. Therefore, compressibility effects have no actual effect
+on the material behavior. Also hysteresis effects like the Mullins effect for rubbers or temperature effects are typically neglected in the constitutive equation for these type of materials. To find
+a constitutive law that covers all the relevant material effects for the deformation of soft actuators is one of the most crucial challenges in that first key research area. The constitutive
+law is a nonlinear function for a class of materials, while each material can be described by that function with a slighty different set of parameter values for that function. To identify these 
+parameter values for the individual materials we use in the robot, we need to do appropriate parameter identification experiments and identify the parameters based on a curve-fitting optimization
+approach \cite{Gao2012}. Hyperelastic constitutive equations with the identified parameters for a large amount of relevant soft robot silicones are being covered in \cite{Marechal2021}. These equations
+do only take into account axial strains and not curvatures for bending and torsion. They also do not cover the effect of pressure and therefore volumetric changes for soft pneumatic
+actuators. The only current paper I could find that handles both of these material effects for the identification of the material properties is the one by Eugster \cite{Eugster2022}.
+%
+B-splines have been introduced by de Boor \cite{Boor1972} and Cox \cite{Cox1972} in 1972. In 1995 Gontier \cite{Gontier1995} came up with the idea to combine the
+ computer-aided design (CAD) and the finite element formulation. The isogeometric analysis has been introduced in 2005 by Hughes \cite{Hughes2005} and in 2009 by
+ Cotrell \cite{Cotrell2009}, respectively. The most comprehensive book about B-spline curves and B-spline shape functions that also includes the numerical algorithms
+for the recursive formulation of B-spline shape functions is written by Piegl and Tiller \cite{Piegl1997_book} in 1997. We summarize the ideas of the isogeometric analysis by Hughes and
+Cotrell and make the connection to soft robotics: 
+%
+Isogeometric analysis is designed to bring CAD and finite element formulations together which makes it a good choice to build the foundation for model-based design
+ and model-based control for continuum-based systems. We use these theoretical concepts and apply them to the practical development of a soft robot demonstrator. 
+%
+Legged locomotion of mechanical systems is a field that is largely influenced by impacts and to a lesser degree friction. These impacts in legged locomotion systems are typically described by 
+Newton impact laws and the resulting friction at the closed contacts of the legs are described by Coulomb friction laws. These set-valued force laws \cite{Glocker2001_book} as differential inclusions
+lead to nonsmooth systems with a set of Differential-algebraic equations and differential inclusion for the set-valued force laws. To solve such a system we need to implement a nonsmooth time-discretization solver
+like the generalized-$\alpha$ solver for nonsmooth systems \cite{Arnold2007, Bruels2018} which does not take friction into account or for more accurate contact description, we should
+implement the extendend nonsmooth generalized-$\alpha$ solver with frictional contacts \cite{Capobianco2021}.
 %
 \subsection*{Design of a physical demonstrator} \label{sub:Design}
 %
+This second research key area combines the design of robots, their fabrication and the actuation techniques that lead to the motion of a robot. There are various challenges in that regard.
+The identity of soft robots is their flexible structure which makes them adaptive to other objects, but has the disadvantage that they are sometimes not stiff enough for a certain tasks
+ and therefore mechanically unstable. Therefore the challenge is to find a design and actuation technique to make legged locomotion of soft robots possible. There exist different techniques to
+ actuate a continuum robot. In fluid-driven actuation a gas like air or a fluid like water is pressurized in chambers to bend the actuator by increasing and decreasing the volume in these
+chambers \cite{Polygerinos2017,Gorissen2017}. That has the advantage to be leight-weight, easy to implement in a hardware setup, but difficult to compute the effects of the pressure on the 
+stiffness of the continuum structure. Another popular actuation method would be to use tendon-driven actuation. The soft actuation is being implemented with cables embedded in the actuator which are pulled
+and released to deform the continuum body \cite{Calisti2011,Chen2018}. The advantage would be that the numerical implementation in a model is easier and more accurate, but the implementation in a hardware design inside
+more complicated than for example a soft pneumatic actuator.
+Less popular techniques for the actuation of soft robots are shape-memory alloys \cite{Jin2016} and electroactive polymers \cite{Gu2017}. But electroactive polymers are more suited for small devices at the moment
+and shape-memory alloys are too slow in their actuation process to be a relevant alternative for a dynamic system like robot for locomotion.
+%
+There exist different methods for the fabrication of soft actuators. The most common ones that we are considering are 3D-printing and silicon casting. 
+%
 As mentioned in section \ref{sec:approach}, we follow a model-based design approach for the physical demonstrator. That means, that the design decisions are based on predictions 
 from numerical simulations and experimental data. 
+\subsection*{Control of a robot demonstrator for legged locomotion} \label{sub:Control}
 %
-\subsection*{Control for the legged locomotion of the robot demonstrator} \label{sub:Control}
-%
-The third big subproject of my PhD is the control of the legged locomotion for that robot demonstrator. 
+The third big key area of my PhD is the control of the legged locomotion for that robot demonstrator. As mentioned in section \ref{sec:approach}, that combines a large amount of subsided
+areas like sensor implementation, maybe sensor design, state estimation, mechanical stability analysis, gait analysis, nonlinear control for impact-aware hybrid systems, gait control.
+A gait is being defined as a periodic motion in legged systems which makes the identification of gaits essential for the locomotion control design and motion planning 
+of legged robots. There have been some approaches to control the locomotion of soft robots, but most of them are relying on wheels \cite{Walker2011_conf}
+or are based on linear systems \cite{Huang2020}.
+Because we can descritize the infinite-dimensional continuum robots with a Finite-Element Galerkin approach in space and use nonsmooth time-discretization methods like
+ the nonsmooth generalized-$\alpha$ solver in \cite{Capobianco2021} to discretize the resulting semi-discrete equations of motion and set-valued impact force laws in time, we are able to do dynamic simulations for the 
+ legged locomotion of these type of robots. That leads to our assumption that we should be able to identify gaits and to design controllers for locomotion 
+by applying the same theories and methods that are being used in the more popular field of legged locomotion of rigid robots and adjust them to
+ the continuum-based robots. These systems are being controlled for locomotion using the Floquet multipliers as eigenvalues of the monodromy matrix
+  which is the Jacobian of the Poincare map of a periodic solution (gait) with respect to the state at a certain fixed point. This is being explained in more detail in \cite{Grizzle2014,Raff2022,Remy2011_conf}.
+ In \cite{Yesilevskiy2018} the authors explain how various gaits from biological systems are being implemented in robots. 
+  More advanced project challenges in that field are to select gaits in a gait controller for economical locomotion of legged robots by minimizing the Cost of Transport (COT) which
+  is explained for rigid quadrupeds and bipeds in \cite{Xi2016}. The Cost of Transport is the necessary energy for the locomotion of a biological or technical system and this COT is 
+  the defining scalar quantity for energy optimal locomotion of any system. Therefore, the challenge we try to overcome is the design of a nonlinear control law for a continuum-based
+  robot demonstrator with multiple limbs by adjusting the control methods of rigid robots to make them applicable to the soft robot design. To be able to do that, we need to solve certain
+  subproblems. To name some of theme, the design needs to be augmented with sensors to track the position, an observer needs to be developed for state estimation of the not measured states and
+  the contact interaction between legs and environment needs to be measured with technologies like impact detection, tactile sensing or estimated with an observer for impacts.  
 
 
 
@@ -152,8 +228,12 @@ I came up with the following publication targets as objectives for this PhD:
 \begin{enumerate}
     \item Model soft robots as nonlinear multi-body continuum-based systems (Conference paper, maybe ACC, year 2) 
     \item Model-based Design of a physical muti-pedal soft robot demonstrator for locomotion  (journal paper, maybe Soft Robotics Journal or Robotics and Automation letters, year 2)
-    \item State estimation for continuum robots (conference paper, year 3)
+    \item State estimation for continuum robots (conference paper, maybe IFAC, year 3)
     \item Mechanical stability analysis of multi-pedal soft robots for legged locomotion control (conference paper, RoboSOFT or ICRA, year 3)
     \item Control design for legged locomotion of a multipedal soft robot demonstrator (Journal Paper, maybe International Journal of Robust and Nonlinear Control, year 4)
     \item Gait Analysis for multi-limb soft robots (Conference paper, maybe RoboSoft or ICRA, year 4) \; .
 \end{enumerate}
+
+
+Besides that, I plan to present my robot design at an appropriate conference for robots like RoboSoft or ICRA. Furthermore, I am looking forward to give a presentation at a conference
+about locomotion of continuum based robots and give a presentation at a Lunch Colloquium about for example impact-aware control of continuum multi-body robots with nonlinear material laws.
